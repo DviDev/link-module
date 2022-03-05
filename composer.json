@@ -1,0 +1,24 @@
+{
+    "name": "dvidev/link-module",
+    "description": "management of links",
+    "type": "laravel-module",
+    "authors": [
+        {
+            "name": "Davi Menezes",
+            "email": "davimenezes.dev@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Url\\": ""
+        }
+    }
+}
