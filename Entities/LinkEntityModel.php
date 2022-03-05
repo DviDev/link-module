@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Url\Entities;
+namespace Modules\Link\Entities;
 
 use Modules\Base\Entities\BaseEntityModel;
-use Modules\Url\Repositories\LinkRepository;
+use Modules\Link\Repositories\LinkRepository;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)

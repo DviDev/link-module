@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Url\Models;
+namespace Modules\Link\Models;
 
 use Modules\Base\Models\BaseModel;
-use Modules\Url\Entities\LinkCommentEntityModel;
+use Modules\Link\Entities\LinkCommentEntityModel;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)

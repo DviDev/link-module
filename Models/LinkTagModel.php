@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Url\Models;
+namespace Modules\Link\Models;
 
 use Modules\Base\Models\BaseModel;
-use Modules\Url\Entities\LinkTagEntityModel;
+use Modules\Link\Entities\LinkTagEntityModel;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)

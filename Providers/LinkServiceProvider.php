@@ -1,21 +1,21 @@
 <?php
 
-namespace Modules\Url\Providers;
+namespace Modules\Link\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
-class UrlServiceProvider extends ServiceProvider
+class LinkServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'Url';
+    protected $moduleName = 'Link';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'url';
+    protected $moduleNameLower = 'link';
 
     /**
      * Boot the application events.

@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Url\Repositories;
+namespace Modules\Link\Repositories;
 
 use Modules\Base\Repository\BaseRepository;
-use Modules\Url\Entities\LinkCommentEntityModel;
-use Modules\Url\Models\LinkCommentModel;
+use Modules\Link\Entities\LinkCommentEntityModel;
+use Modules\Link\Models\LinkCommentModel;
 
 /**
  * @author Davi Menezes(davimenezes.dev@gmail.com)
