@@ -87,5 +87,6 @@ graph TD
    5. Reply
       1. id
          1. [ ] required
-         2. [ ] required 
+      2. message
+         1. [ ] required 
 
