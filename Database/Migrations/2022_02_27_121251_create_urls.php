@@ -23,7 +23,7 @@ class CreateUrls extends Migration
             $table->string($prop->name, 100);
             $table->text($prop->link_url);
             $table->text($prop->description)->nullable();
-            $table->timestamp($prop->created_at)->useCurrent();
+            $table->timestamp($prop->created_at);
         });
     }
 
