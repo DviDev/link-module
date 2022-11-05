@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\link\Entities\LinkTag;
+namespace Modules\Link\Entities\LinkTag;
 
 /**
  * @property $id
