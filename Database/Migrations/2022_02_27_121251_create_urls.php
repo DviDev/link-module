@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Url\Entities\LinkEntityModel;
+use Modules\Link\Entities\LinkEntityModel;
 
 class CreateUrls extends Migration
 {

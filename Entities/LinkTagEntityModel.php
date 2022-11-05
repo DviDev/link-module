@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\Url\Entities;
+namespace Modules\Link\Entities;
 
 use Modules\Base\Entities\BaseEntityModel;
-use Modules\Url\Repositories\LinkTagRepository;
+use Modules\Link\Repositories\LinkTagRepository;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @property $id
- * @property $url_id
+ * @property $link_id
  * @property $tag
  * @method static self props($alias = null, $force = null)
  * @method LinkTagRepository repository()

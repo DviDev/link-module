@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\Url\Entities;
+namespace Modules\Link\Entities;
 
 use Modules\Base\Entities\BaseEntityModel;
-use Modules\Url\Repositories\LinkCommentRepository;
+use Modules\Link\Repositories\LinkCommentRepository;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @property $id
- * @property $url_id
+ * @property $link_id
  * @property $user_id
  * @property $parent_id
  * @property $message

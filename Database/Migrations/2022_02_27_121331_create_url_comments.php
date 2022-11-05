@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Url\Entities\LinkCommentEntityModel;
+use Modules\Link\Entities\LinkCommentEntityModel;
 
 class CreateUrlComments extends Migration
 {
@@ -18,7 +18,7 @@ class CreateUrlComments extends Migration
             $table->id();
 
             $prop = LinkCommentEntityModel::props(null, true);
-            $table->bigInteger($prop->url_id)->unsigned();
+            $table->bigInteger($prop->link_id)->unsigned();
             $table->bigInteger($prop->user_id)->unsigned();
             $table->bigInteger($prop->parent_id)->unsigned();
             $table->text($prop->message);

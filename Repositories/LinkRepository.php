@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Url\Repositories;
+namespace Modules\Link\Repositories;
 
 use Modules\Base\Repository\BaseRepository;
-use Modules\Url\Entities\LinkEntityModel;
-use Modules\Url\Models\LinkModel;
+use Modules\Link\Entities\LinkEntityModel;
+use Modules\Link\Models\LinkModel;
 
 /**
  * @author Davi Menezes(davimenezes.dev@gmail.com)

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Url\Entities\LinkTagEntityModel;
+use Modules\Link\Entities\LinkTagEntityModel;
 
 class CreateUrlTags extends Migration
 {
@@ -14,11 +14,11 @@ class CreateUrlTags extends Migration
      */
     public function up()
     {
-        Schema::create('url_tags', function (Blueprint $table) {
+        Schema::create('link_tags', function (Blueprint $table) {
             $table->id();
 
             $prop = LinkTagEntityModel::props(null, true);
-            $table->bigInteger($prop->url_id)->unsigned();
+            $table->bigInteger($prop->link_id)->unsigned();
             $table->char($prop->tag, 14);
         });
     }
@@ -30,6 +30,6 @@ class CreateUrlTags extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('url_tags');
+        Schema::dropIfExists('link_tags');
     }
 }
