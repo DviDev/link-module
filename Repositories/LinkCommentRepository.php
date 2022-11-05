@@ -3,7 +3,7 @@
 namespace Modules\Link\Repositories;
 
 use Modules\Base\Repository\BaseRepository;
-use Modules\Link\Entities\LinkCommentEntityModel;
+use Modules\Link\Entities\LinkComment\LinkCommentEntityModel;
 use Modules\Link\Models\LinkCommentModel;
 
 /**
