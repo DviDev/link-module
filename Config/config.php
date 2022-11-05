@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'name' => 'Url'
+    'name' => 'Link'
 ];

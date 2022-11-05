@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Link\Entities\LinkEntityModel;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\Link\Entities\Link\LinkEntityModel;
 
 class CreateUrls extends Migration
 {
@@ -23,7 +23,7 @@ class CreateUrls extends Migration
             $table->string($prop->name, 100);
             $table->text($prop->link_url);
             $table->text($prop->description)->nullable();
-            $table->timestamp($prop->created_at)->useCurrent();
+            $table->timestamp($prop->created_at);
         });
     }
 

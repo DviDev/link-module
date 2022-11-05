@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Link\Entities\LinkCommentEntityModel;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\Link\Entities\LinkComment\LinkCommentEntityModel;
 
 class CreateUrlComments extends Migration
 {
@@ -22,7 +22,7 @@ class CreateUrlComments extends Migration
             $table->bigInteger($prop->user_id)->unsigned();
             $table->bigInteger($prop->parent_id)->unsigned();
             $table->text($prop->message);
-            $table->timestamp($prop->created_at)->useCurrent();
+            $table->timestamp($prop->created_at);
         });
     }
 

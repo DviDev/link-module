@@ -3,7 +3,7 @@
 namespace Modules\Link\Repositories;
 
 use Modules\Base\Repository\BaseRepository;
-use Modules\Link\Entities\LinkEntityModel;
+use Modules\Link\Entities\Link\LinkEntityModel;
 use Modules\Link\Models\LinkModel;
 
 /**
