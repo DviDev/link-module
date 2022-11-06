@@ -9,6 +9,8 @@ namespace Modules\Link\Entities\LinkComment;
  * @property $parent_id
  * @property $message
  * @property $created_at
+ * @property $updated_at
+ * @property $deleted_at
  */
 trait LinkCommentProps
 {

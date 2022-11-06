@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Link\Entities\LinkTag\LinkTagEntityModel;
 
-class CreateUrlTags extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -32,4 +32,4 @@ class CreateUrlTags extends Migration
     {
         Schema::dropIfExists('link_tags');
     }
-}
+};

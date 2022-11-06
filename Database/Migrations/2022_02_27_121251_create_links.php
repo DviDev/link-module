@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Link\Entities\Link\LinkEntityModel;
 
-class CreateUrls extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -23,7 +23,9 @@ class CreateUrls extends Migration
             $table->string($prop->name, 100);
             $table->text($prop->link_url);
             $table->text($prop->description)->nullable();
-            $table->timestamp($prop->created_at);
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -36,4 +38,4 @@ class CreateUrls extends Migration
     {
         Schema::dropIfExists('links');
     }
-}
+};

@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Link\Entities\LinkComment\LinkCommentEntityModel;
 
-class CreateUrlComments extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -22,7 +22,9 @@ class CreateUrlComments extends Migration
             $table->bigInteger($prop->user_id)->unsigned();
             $table->bigInteger($prop->parent_id)->unsigned();
             $table->text($prop->message);
-            $table->timestamp($prop->created_at);
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -35,4 +37,4 @@ class CreateUrlComments extends Migration
     {
         Schema::dropIfExists('link_comments');
     }
-}
+};

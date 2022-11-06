@@ -10,6 +10,8 @@ namespace Modules\Link\Entities\Link;
  * @property $link_url
  * @property $description
  * @property $created_at
+ * @property $updated_at
+ * @property $deleted_at
  */
 trait LinkProps
 {
