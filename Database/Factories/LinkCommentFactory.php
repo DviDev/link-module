@@ -28,7 +28,10 @@ class LinkCommentFactory extends Factory
     {
         $p = LinkCommentEntityModel::props(null, true);
         return [
-
+            $p->link_id => null,
+            $p->user_id => null,
+            $p->parent_id => null,
+            $p->message => $this->faker->sentences(),
         ];
     }
 }

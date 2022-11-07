@@ -12,7 +12,7 @@ use Modules\Link\Entities\Link\LinkProps;
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method LinkEntityModel toEntity()
- * @method LinkFactory factory()
+ * @method static LinkFactory factory()
  */
 class LinkModel extends BaseModel
 {

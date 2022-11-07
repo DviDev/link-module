@@ -12,7 +12,7 @@ use Modules\Link\Entities\LinkTag\LinkTagProps;
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  * @method LinkTagEntityModel toEntity()
- * @method LinkTagFactory factory()
+ * @method static LinkTagFactory factory()
  */
 class LinkTagModel extends BaseModel
 {

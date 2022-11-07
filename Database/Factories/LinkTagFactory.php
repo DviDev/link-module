@@ -28,7 +28,8 @@ class LinkTagFactory extends Factory
     {
         $p = LinkTagEntityModel::props(null, true);
         return [
-
+            $p->link_id => null,
+            $p->tag => $this->faker->word()
         ];
     }
 }
