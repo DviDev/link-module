@@ -21,10 +21,6 @@ class LinkDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $p = LinkEntityModel::props();
-        LinkModel::factory()->create([
-            $p->workspace_id => WorkspaceModel::query()->inRandomOrder()->first()->id,
-            $p->user_id => User::query()->inRandomOrder()->first()->id
-        ]);
+
     }
 }

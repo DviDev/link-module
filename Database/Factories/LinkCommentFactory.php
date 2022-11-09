@@ -30,8 +30,8 @@ class LinkCommentFactory extends Factory
         return [
             $p->link_id => null,
             $p->user_id => null,
-            $p->parent_id => null,
-            $p->message => $this->faker->sentences(),
+            $p->parent_id => collect([null, LinkCommentModel::query()->inRandomOrder()->first()->id ?? null])->random(),
+            $p->message => $this->faker->sentence(),
         ];
     }
 }

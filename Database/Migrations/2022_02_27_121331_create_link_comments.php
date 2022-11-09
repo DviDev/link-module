@@ -20,7 +20,7 @@ return new class extends Migration
             $prop = LinkCommentEntityModel::props(null, true);
             $table->bigInteger($prop->link_id)->unsigned();
             $table->bigInteger($prop->user_id)->unsigned();
-            $table->bigInteger($prop->parent_id)->unsigned();
+            $table->bigInteger($prop->parent_id)->unsigned()->nullable();
             $table->text($prop->message);
 
             $table->timestamps();
