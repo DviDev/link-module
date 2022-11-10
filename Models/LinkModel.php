@@ -14,7 +14,6 @@ use Modules\Workspace\Models\WorkspaceModel;
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
- * @property-read WorkspaceModel $workspace
  * @property-read User $user
  * @method LinkEntityModel toEntity()
  * @method static LinkFactory factory()
@@ -37,11 +36,6 @@ class LinkModel extends BaseModel
     public static function table($alias = null): string
     {
         return self::dbTable('links', $alias);
-    }
-
-    public function workspace(): BelongsTo
-    {
-        return $this->belongsTo(WorkspaceModel::class, 'workspace_id');
     }
 
     public function user(): BelongsTo

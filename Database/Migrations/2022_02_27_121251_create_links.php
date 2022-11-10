@@ -18,7 +18,6 @@ return new class extends Migration
             $table->id();
 
             $prop = LinkEntityModel::props(null, true);
-            $table->bigInteger($prop->workspace_id)->unsigned();
             $table->bigInteger($prop->user_id)->unsigned();
             $table->string($prop->name, 100);
             $table->text($prop->link_url);

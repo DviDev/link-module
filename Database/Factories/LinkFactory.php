@@ -28,7 +28,6 @@ class LinkFactory extends Factory
     {
         $p = LinkEntityModel::props(null, true);
         return [
-            $p->workspace_id => null,
             $p->user_id => null,
             $p->name => $this->faker->name(),
             $p->link_url => $this->faker->url(),
