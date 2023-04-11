@@ -2,15 +2,14 @@
 
 namespace Modules\Link\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Link\Entities\Link\LinkEntityModel;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Link\Models\LinkModel;
 
 /**
  * @method LinkModel create(array $attributes = [])
  * @method LinkModel make(array $attributes = [])
  */
-class LinkFactory extends Factory
+class LinkFactory extends BaseFactory
 {
     /**
      * The name of the factory's corresponding model.
@@ -26,12 +25,6 @@ class LinkFactory extends Factory
      */
     public function definition(): array
     {
-        $p = LinkEntityModel::props(null, true);
-        return [
-            $p->user_id => null,
-            $p->name => $this->faker->name(),
-            $p->link_url => $this->faker->url(),
-            $p->description => $this->faker->sentence()
-        ];
+        return $this->getValues();
     }
 }
