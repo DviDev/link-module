@@ -2,15 +2,14 @@
 
 namespace Modules\Link\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Link\Entities\LinkTag\LinkTagEntityModel;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Link\Models\LinkTagModel;
 
 /**
  * @method LinkTagModel create(array $attributes = [])
  * @method LinkTagModel make(array $attributes = [])
  */
-class LinkTagFactory extends Factory
+class LinkTagFactory extends BaseFactory
 {
     /**
      * The name of the factory's corresponding model.
@@ -26,9 +25,6 @@ class LinkTagFactory extends Factory
      */
     public function definition(): array
     {
-        $p = LinkTagEntityModel::props(null, true);
-        return [
-
-        ];
+        return $this->getValues();
     }
 }

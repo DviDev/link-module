@@ -2,15 +2,14 @@
 
 namespace Modules\Link\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Link\Entities\LinkComment\LinkCommentEntityModel;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Link\Models\LinkCommentModel;
 
 /**
  * @method LinkCommentModel create(array $attributes = [])
  * @method LinkCommentModel make(array $attributes = [])
  */
-class LinkCommentFactory extends Factory
+class LinkCommentFactory extends BaseFactory
 {
     /**
      * The name of the factory's corresponding model.
@@ -26,9 +25,6 @@ class LinkCommentFactory extends Factory
      */
     public function definition(): array
     {
-        $p = LinkCommentEntityModel::props(null, true);
-        return [
-
-        ];
+        return $this->getValues();
     }
 }
