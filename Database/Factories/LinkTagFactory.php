@@ -3,6 +3,7 @@
 namespace Modules\Link\Database\Factories;
 
 use Modules\Base\Factories\BaseFactory;
+use Modules\Link\Entities\LinkTag\LinkTagEntityModel;
 use Modules\Link\Models\LinkTagModel;
 
 /**
@@ -25,6 +26,9 @@ class LinkTagFactory extends BaseFactory
      */
     public function definition(): array
     {
-        return $this->getValues();
+        $p = LinkTagEntityModel::props();
+        $values = $this->getValues();
+        $values[$p->tag] = str($values[$p->tag])->snake()->value();
+        return $values;
     }
 }
