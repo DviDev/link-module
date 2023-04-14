@@ -5,6 +5,7 @@ namespace Modules\Link\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Base\Models\BaseModel;
 use Modules\Link\Database\Factories\LinkFactory;
 use Modules\Link\Entities\Link\LinkEntityModel;
@@ -41,5 +42,15 @@ class LinkModel extends BaseModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function tags(): HasMany
+    {
+        return $this->hasMany(LinkTagModel::class, 'link_id');
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(LinkCommentModel::class, 'link_id');
     }
 }

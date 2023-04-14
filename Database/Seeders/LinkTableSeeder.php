@@ -21,29 +21,30 @@ class LinkTableSeeder extends Seeder
      * Run the database seeds.
      * @return LinkModel[]|Collection
      */
-    public function run(WorkspaceModel $workspace, User $user): array|Collection
+    public function run(WorkspaceModel $workspace, User $user)
     {
         Model::unguard();
 
-        $links = LinkModel::factory()
+        LinkModel::factory()
             ->count(config('app.LINK_SEED_COUNT'))
             ->for($user, 'user')
             ->create();
-        $links->each(function (LinkModel $link) use ($workspace) {
-            WorkspaceLinkModel::factory()->for($workspace, 'workspace')->for($link, 'link')
-                ->create()->each(function () use ($workspace, $link) {
-                    ds("sync workspace $workspace->id link $link->id");
-                });
+        $workspace->links()->each(function (LinkModel $link) use ($workspace) {
+            WorkspaceLinkModel::factory()->for($workspace, 'workspace')->for($link, 'link')->create();
+            ds("sync workspace $workspace->id link $link->id");
 
             LinkTagModel::factory()->count(config('app.LINK_TAG_SEED_COUNT'))
-                ->for($link, 'link')->create()->each(function(LinkTagModel $linkTag) {
-                    ds("link $linkTag->link_id tag $linkTag->id");
-                });
+                ->for($link, 'link')->create();
+
+            $link->tags()->each(function (LinkTagModel $linkTag) use ($link) {
+                ds("link $link->id $linkTag->link_id tag $linkTag->id");
+            });
 
             $workspace->participants()->each(function (User $participant) use ($link) {
                 LinkCommentModel::factory()->count(config('app.COMMENTS_SEED_COUNT'))
-                    ->for($link, 'link')->for($participant, 'user')->create()
-                    ->each(function (LinkCommentModel $comment) use ($participant) {
+                    ->for($link, 'link')->for($participant, 'user')->create();
+
+                $link->comments()->each(function (LinkCommentModel $comment) use ($participant) {
                         ds("link $comment->link_id participant $participant->id comment $comment->id");
                         $p = LinkCommentVoteEntityModel::props();
 
@@ -51,13 +52,12 @@ class LinkTableSeeder extends Seeder
                         $fnDownVote = fn(Factory $factory) => $factory->create([$p->down_vote => 1]);
 
                         $factory = LinkCommentVoteModel::factory()->for($comment, 'comment')->for($participant, 'user');
-                        /**@var \Closure $choice*/
+                        /**@var \Closure $choice */
                         $choice = collect([$fnUpVote, $fnDownVote])->random();
                         $choice($factory);
                     });
             });
         });
 
-        return $links;
     }
 }

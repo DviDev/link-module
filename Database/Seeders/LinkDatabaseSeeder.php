@@ -21,7 +21,7 @@ class LinkDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        WorkspaceModel::query()->limit(2)->get()->each(function (WorkspaceModel $workspace) {
+        User::query()->find(1)->workspaces()->each(function (WorkspaceModel $workspace) {
             $user = $workspace->user;
             $this->call(LinkTableSeeder::class, true, compact('workspace', 'user'));
         });
