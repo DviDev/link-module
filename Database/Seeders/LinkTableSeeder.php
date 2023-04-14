@@ -26,14 +26,14 @@ class LinkTableSeeder extends Seeder
         Model::unguard();
 
         LinkModel::factory()
-            ->count(config('app.LINK_SEED_COUNT'))
+            ->count(config('app.SEED_LINK_COUNT'))
             ->for($user, 'user')
             ->create();
         $workspace->links()->each(function (LinkModel $link) use ($workspace) {
             WorkspaceLinkModel::factory()->for($workspace, 'workspace')->for($link, 'link')->create();
             ds("sync workspace $workspace->id link $link->id");
 
-            LinkTagModel::factory()->count(config('app.LINK_TAG_SEED_COUNT'))
+            LinkTagModel::factory()->count(config('app.SEED_LINK_TAG_COUNT'))
                 ->for($link, 'link')->create();
 
             $link->tags()->each(function (LinkTagModel $linkTag) use ($link) {
@@ -41,7 +41,7 @@ class LinkTableSeeder extends Seeder
             });
 
             $workspace->participants()->each(function (User $participant) use ($link) {
-                LinkCommentModel::factory()->count(config('app.COMMENTS_SEED_COUNT'))
+                LinkCommentModel::factory()->count(config('app.SEED_COMMENTS_COUNT'))
                     ->for($link, 'link')->for($participant, 'user')->create();
 
                 $link->comments()->each(function (LinkCommentModel $comment) use ($participant) {
