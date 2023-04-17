@@ -5,6 +5,7 @@ namespace Modules\Link\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Base\Models\BaseModel;
 use Modules\Link\Database\Factories\LinkCommentFactory;
@@ -48,5 +49,10 @@ class LinkCommentModel extends BaseModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function votes(): HasMany
+    {
+        return $this->hasMany(LinkCommentVoteModel::class, 'comment_id');
     }
 }
