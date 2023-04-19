@@ -17,8 +17,12 @@ return new class extends Migration
         Schema::create('link_comment_votes', function (Blueprint $table) {
             $p = LinkCommentVoteEntityModel::props(null, true);
             $table->id();
-            $table->bigInteger($p->user_id)->unsigned();
-            $table->bigInteger($p->comment_id)->unsigned();
+            $table->foreignId($p->user_id)
+                ->references('id')->on('users')
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId($p->comment_id)
+                ->references('id')->on('link_comments')
+                ->cascadeOnUpdate()->restrictOnDelete();
             $table->boolean($p->up_vote)->unsigned()->nullable();
             $table->boolean($p->down_vote)->unsigned()->nullable();
 

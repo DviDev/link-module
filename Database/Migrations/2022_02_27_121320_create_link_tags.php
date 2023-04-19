@@ -18,7 +18,9 @@ return new class extends Migration
             $table->id();
 
             $prop = LinkTagEntityModel::props(null, true);
-            $table->bigInteger($prop->link_id)->unsigned();
+            $table->foreignId($prop->link_id)
+                ->references('id')->on('links')
+                ->cascadeOnUpdate()->restrictOnDelete();
             $table->char($prop->tag, 14);
         });
     }

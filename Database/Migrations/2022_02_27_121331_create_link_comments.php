@@ -18,9 +18,17 @@ return new class extends Migration
             $table->id();
 
             $prop = LinkCommentEntityModel::props(null, true);
-            $table->bigInteger($prop->link_id)->unsigned();
-            $table->bigInteger($prop->user_id)->unsigned();
-            $table->bigInteger($prop->parent_id)->unsigned()->nullable();
+            $table->foreignId($prop->link_id)
+                ->references('id')->on('links')
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId($prop->user_id)
+                ->references('id')->on('users')
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId($prop->parent_id)
+                ->nullable()
+                ->references('id')->on('link_comments')
+                ->cascadeOnUpdate()->nullOnDelete();
+
             $table->text($prop->message);
 
             $table->timestamps();

@@ -42,7 +42,13 @@ class LinkTableSeeder extends Seeder
 
             $workspace->participants()->each(function (User $participant) use ($link) {
                 LinkCommentModel::factory()->count(config('app.SEED_COMMENTS_COUNT'))
-                    ->for($link, 'link')->for($participant, 'user')->create();
+                    ->for($link, 'link')
+                    ->for($participant, 'user')
+                    ->sequence(
+                            ['parent_id' => null],
+                            ['parent_id' => LinkCommentModel::query()->inRandomOrder()->first()->id ?? null]
+                    )
+                    ->create();
 
                 $link->comments()->each(function (LinkCommentModel $comment) use ($participant) {
                         ds("link $comment->link_id participant $participant->id comment $comment->id");
