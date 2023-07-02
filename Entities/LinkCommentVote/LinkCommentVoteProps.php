@@ -8,6 +8,8 @@ namespace Modules\Link\Entities\LinkCommentVote;
  * @property $up_vote
  * @property $down_vote
  * @property $created_at
+ * @property $updated_at
+ * @property $deleted_at
  */
 trait LinkCommentVoteProps
 {

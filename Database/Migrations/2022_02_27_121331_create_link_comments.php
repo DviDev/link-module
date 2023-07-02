@@ -17,22 +17,24 @@ return new class extends Migration
         Schema::create('link_comments', function (Blueprint $table) {
             $table->id();
 
-            $prop = LinkCommentEntityModel::props(null, true);
-            $table->foreignId($prop->link_id)
+            $p = LinkCommentEntityModel::props(null, true);
+            $table->foreignId($p->link_id)
                 ->references('id')->on('links')
                 ->cascadeOnUpdate()->restrictOnDelete();
-            $table->foreignId($prop->user_id)
+            $table->foreignId($p->user_id)
                 ->references('id')->on('users')
                 ->cascadeOnUpdate()->restrictOnDelete();
-            $table->foreignId($prop->parent_id)
+            $table->foreignId($p->parent_id)
                 ->nullable()
                 ->references('id')->on('link_comments')
                 ->cascadeOnUpdate()->nullOnDelete();
 
-            $table->text($prop->message);
+            $table->text($p->message);
 
-            $table->timestamps();
-            $table->softDeletes();
+            $table->timestamp($p->created_at)->useCurrent();
+            $table->timestamp($p->updated_at)->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp($p->deleted_at)->nullable();
+
         });
     }
 

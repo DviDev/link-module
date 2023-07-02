@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Modules\Link\Entities\LinkCommentVote\LinkCommentVoteEntityModel;
 
 return new class extends Migration
@@ -26,7 +26,10 @@ return new class extends Migration
             $table->boolean($p->up_vote)->unsigned()->nullable();
             $table->boolean($p->down_vote)->unsigned()->nullable();
 
-            $table->timestamp($p->created_at);
+            $table->timestamp($p->created_at)->useCurrent();
+            $table->timestamp($p->updated_at)->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp($p->deleted_at)->nullable();
+
         });
     }
 

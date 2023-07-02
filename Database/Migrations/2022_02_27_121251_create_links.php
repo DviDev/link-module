@@ -17,16 +17,18 @@ return new class extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
 
-            $prop = LinkEntityModel::props(null, true);
-            $table->foreignId($prop->user_id)
+            $p = LinkEntityModel::props(null, true);
+            $table->foreignId($p->user_id)
                 ->references('id')->on('users')
                 ->cascadeOnUpdate()->restrictOnDelete();
-            $table->string($prop->name, 100);
-            $table->text($prop->link_url);
-            $table->text($prop->description)->nullable();
+            $table->string($p->name, 100);
+            $table->text($p->link_url);
+            $table->text($p->description)->nullable();
 
-            $table->timestamps();
-            $table->softDeletes();
+            $table->timestamp($p->created_at)->useCurrent();
+            $table->timestamp($p->updated_at)->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp($p->deleted_at)->nullable();
+
         });
     }
 
