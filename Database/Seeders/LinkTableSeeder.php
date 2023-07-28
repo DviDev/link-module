@@ -25,45 +25,38 @@ class LinkTableSeeder extends Seeder
     {
         Model::unguard();
 
-        LinkModel::factory()
-            ->count(config('app.SEED_LINK_COUNT'))
+        $links = LinkModel::factory(config('app.SEED_LINK_COUNT', 3))
             ->for($user, 'user')
-            ->create();
+            ->has(LinkTagModel::factory(config('app.SEED_LINK_TAG_COUNT', 3)))
+            ->create()
+            ->modelKeys();
+
+        $workspace->links()->attach($links);
+
         $workspace->links()->each(function (LinkModel $link) use ($workspace) {
-            WorkspaceLinkModel::factory()->for($workspace, 'workspace')->for($link, 'link')->create();
-            ds("sync workspace $workspace->id link $link->id");
-
-            LinkTagModel::factory()->count(config('app.SEED_LINK_TAG_COUNT'))
-                ->for($link, 'link')->create();
-
-            $link->tags()->each(function (LinkTagModel $linkTag) use ($link) {
-                ds("link $link->id $linkTag->link_id tag $linkTag->id");
-            });
 
             $workspace->participants()->each(function (User $participant) use ($link) {
                 LinkCommentModel::factory()->count(config('app.SEED_COMMENTS_COUNT'))
                     ->for($link, 'link')
                     ->for($participant, 'user')
                     ->sequence(
-                            ['parent_id' => null],
-                            ['parent_id' => LinkCommentModel::query()->inRandomOrder()->first()->id ?? null]
+                        ['parent_id' => null],
+                        ['parent_id' => LinkCommentModel::query()->inRandomOrder()->first()->id ?? null]
                     )
                     ->create();
 
                 $link->comments()->each(function (LinkCommentModel $comment) use ($participant) {
-                        ds("link $comment->link_id participant $participant->id comment $comment->id");
-                        $p = LinkCommentVoteEntityModel::props();
+                    $p = LinkCommentVoteEntityModel::props();
 
-                        $fnUpVote = fn(Factory $factory) => $factory->create([$p->up_vote => 1]);
-                        $fnDownVote = fn(Factory $factory) => $factory->create([$p->down_vote => 1]);
+                    $fnUpVote = fn(Factory $factory) => $factory->create([$p->up_vote => 1]);
+                    $fnDownVote = fn(Factory $factory) => $factory->create([$p->down_vote => 1]);
 
-                        $factory = LinkCommentVoteModel::factory()->for($comment, 'comment')->for($participant, 'user');
-                        /**@var \Closure $choice */
-                        $choice = collect([$fnUpVote, $fnDownVote])->random();
-                        $choice($factory);
-                    });
+                    $factory = LinkCommentVoteModel::factory()->for($comment, 'comment')->for($participant, 'user');
+                    /**@var \Closure $choice */
+                    $choice = collect([$fnUpVote, $fnDownVote])->random();
+                    $choice($factory);
+                });
             });
         });
-
     }
 }

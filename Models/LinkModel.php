@@ -5,11 +5,13 @@ namespace Modules\Link\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Base\Models\BaseModel;
 use Modules\Link\Database\Factories\LinkFactory;
 use Modules\Link\Entities\Link\LinkEntityModel;
 use Modules\Link\Entities\Link\LinkProps;
+use Modules\Workspace\Models\WorkspaceLinkModel;
 use Modules\Workspace\Models\WorkspaceModel;
 
 /**
@@ -17,7 +19,7 @@ use Modules\Workspace\Models\WorkspaceModel;
  * @link https://github.com/DaviMenezes
  * @property-read User $user
  * @method LinkEntityModel toEntity()
- * @method static LinkFactory factory()
+ * @method static LinkFactory factory($count = null, $state = [])
  */
 class LinkModel extends BaseModel
 {
@@ -52,5 +54,10 @@ class LinkModel extends BaseModel
     public function comments(): HasMany
     {
         return $this->hasMany(LinkCommentModel::class, 'link_id');
+    }
+
+    public function workspaces(): BelongsToMany
+    {
+        return $this->belongsToMany(WorkspaceModel::class, WorkspaceLinkModel::table(), 'workspace_id', 'link_id');
     }
 }

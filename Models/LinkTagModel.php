@@ -14,7 +14,7 @@ use Modules\Link\Entities\LinkTag\LinkTagProps;
  * @link https://github.com/DaviMenezes
  * @property-read LinkModel $link
  * @method LinkTagEntityModel toEntity()
- * @method static LinkTagFactory factory()
+ * @method static LinkTagFactory factory($count = null, $state = [])
  */
 class LinkTagModel extends BaseModel
 {
