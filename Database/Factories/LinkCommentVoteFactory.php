@@ -2,6 +2,7 @@
 namespace Modules\Link\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Link\Models\LinkCommentVoteModel;
 use Modules\Link\Entities\LinkCommentVote\LinkCommentVoteEntityModel;
 
@@ -9,7 +10,7 @@ use Modules\Link\Entities\LinkCommentVote\LinkCommentVoteEntityModel;
  * @method LinkCommentVoteModel create(array $attributes = [])
  * @method LinkCommentVoteModel make(array $attributes = [])
  */
-class LinkCommentVoteFactory extends Factory
+class LinkCommentVoteFactory extends BaseFactory
 {
     /**
      * The name of the factory's corresponding model.
