@@ -4,7 +4,7 @@ namespace Modules\Link\Entities\Link;
 
 /**
  * @property $id
- * @property $workspace_id
+ * @property $entity_id
  * @property $user_id
  * @property $name
  * @property $link_url
