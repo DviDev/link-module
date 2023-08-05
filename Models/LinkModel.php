@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Base\Factories\BaseFactory;
 use Modules\Base\Models\BaseModel;
-use Modules\Link\Database\Factories\LinkFactory;
 use Modules\Link\Entities\Link\LinkEntityModel;
 use Modules\Link\Entities\Link\LinkProps;
 use Modules\Workspace\Models\WorkspaceLinkModel;
@@ -19,7 +19,6 @@ use Modules\Workspace\Models\WorkspaceModel;
  * @link https://github.com/DaviMenezes
  * @property-read User $user
  * @method LinkEntityModel toEntity()
- * @method static LinkFactory factory($count = null, $state = [])
  */
 class LinkModel extends BaseModel
 {
@@ -31,9 +30,11 @@ class LinkModel extends BaseModel
         return LinkEntityModel::class;
     }
 
-    protected static function newFactory(): LinkFactory
+    protected static function newFactory()
     {
-        return new LinkFactory();
+        return new class extends BaseFactory {
+            protected $model = LinkModel::class;
+        };
     }
 
     public static function table($alias = null): string
