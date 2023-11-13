@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Link\Entities\LinkTag\LinkTagEntityModel;
 
-class CreateUrlTags extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,9 @@ class CreateUrlTags extends Migration
             $table->id();
 
             $prop = LinkTagEntityModel::props(null, true);
-            $table->bigInteger($prop->link_id)->unsigned();
+            $table->foreignId($prop->link_id)
+                ->references('id')->on('links')
+                ->cascadeOnUpdate()->restrictOnDelete();
             $table->char($prop->tag, 14);
         });
     }
@@ -32,4 +34,4 @@ class CreateUrlTags extends Migration
     {
         Schema::dropIfExists('link_tags');
     }
-}
+};
