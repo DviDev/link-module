@@ -28,7 +28,7 @@ class LinkDatabaseSeeder extends Seeder
         $module = ProjectModuleModel::query()->where('name', 'Link')->first();
         $project = $module->project;
 
-        User::query()->find(1)->workspaces()
+        WorkspaceModel::byUserId(User::query()->find(1)->id)
             ->each(function (WorkspaceModel $workspace) {
                 $user = $workspace->user;
                 $this->call(LinkTableSeeder::class, true, compact('workspace', 'user'));
