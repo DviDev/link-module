@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Modules\App\Database\Seeders\MessageTableSeeder;
-use Modules\App\Models\EntityItemModel;
+use Modules\App\Models\RecordModel;
 use Modules\Link\Models\LinkModel;
 use Modules\Link\Models\LinkTagModel;
 use Modules\Workspace\Models\WorkspaceModel;
@@ -31,8 +31,8 @@ class LinkTableSeeder extends Seeder
         $workspace->links()->attach($links);
 
         $workspace->links()->each(function (LinkModel $link) use ($workspace) {
-            $entity = EntityItemModel::factory()->create();
-            $link->entity_id = $entity->id;
+            $entity = RecordModel::factory()->create();
+            $link->record_id = $entity->id;
             $link->save();
 
             $workspace->participants()->each(function (User $user) use ($entity) {
