@@ -25,7 +25,7 @@ class LinkDatabaseSeeder extends Seeder
 
         (new ScanTableDomain())->scan('link');
 
-        $module = ProjectModuleModel::query()->where('name', 'Link')->first();
+        $module = ProjectModuleModel::byName('Link');
         $project = $module->project;
 
         WorkspaceModel::byUserId(User::query()->find(1)->id)
