@@ -8,7 +8,6 @@ use Illuminate\Database\Seeder;
 use Modules\DBMap\Domains\ScanTableDomain;
 use Modules\Link\Models\LinkModel;
 use Modules\Permission\Database\Seeders\PermissionTableSeeder;
-use Modules\Project\Database\Seeders\ProjectTableSeeder;
 use Modules\Project\Models\ProjectModuleModel;
 use Modules\Workspace\Models\WorkspaceModel;
 
@@ -37,8 +36,6 @@ class LinkDatabaseSeeder extends Seeder
         $project->links()->attach(LinkModel::query()->get()->modelKeys());
 
         $this->call(class: PermissionTableSeeder::class, parameters: ['module' => $module]);
-
-        $this->call(ProjectTableSeeder::class, parameters: ['project' => $project, 'module' => $module]);
-
+//        $this->call(ProjectTableSeeder::class, parameters: ['project' => $project, 'module' => $module]);
     }
 }
