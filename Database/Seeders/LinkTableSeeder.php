@@ -5,14 +5,14 @@ namespace Modules\Link\Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Seeder;
 use Modules\App\Database\Seeders\MessageTableSeeder;
 use Modules\App\Models\RecordModel;
+use Modules\Base\Database\Seeders\BaseSeeder;
 use Modules\Link\Models\LinkModel;
 use Modules\Link\Models\LinkTagModel;
 use Modules\Workspace\Models\WorkspaceModel;
 
-class LinkTableSeeder extends Seeder
+class LinkTableSeeder extends BaseSeeder
 {
     /**
      * Run the database seeds.
@@ -21,6 +21,8 @@ class LinkTableSeeder extends Seeder
     public function run(WorkspaceModel $workspace, User $user)
     {
         Model::unguard();
+
+        $this->command->warn(PHP_EOL . '🤖 🌱 seeding ' . str(__CLASS__)->explode('\\')->last() . ' ...');
 
         $links = LinkModel::factory(config('app.SEED_LINK_COUNT', 3))
             ->for($user, 'user')
@@ -39,5 +41,7 @@ class LinkTableSeeder extends Seeder
                 $this->call(MessageTableSeeder::class, parameters: compact('entity', 'user'));
             });
         });
+
+        $this->commandInfo(__CLASS__, '✔️ done');
     }
 }

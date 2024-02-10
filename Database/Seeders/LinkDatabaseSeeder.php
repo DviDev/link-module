@@ -4,14 +4,14 @@ namespace Modules\Link\Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Seeder;
+use Modules\Base\Database\Seeders\BaseSeeder;
 use Modules\DBMap\Domains\ScanTableDomain;
 use Modules\Link\Models\LinkModel;
 use Modules\Permission\Database\Seeders\PermissionTableSeeder;
 use Modules\Project\Models\ProjectModuleModel;
 use Modules\Workspace\Models\WorkspaceModel;
 
-class LinkDatabaseSeeder extends Seeder
+class LinkDatabaseSeeder extends BaseSeeder
 {
     /**
      * Run the database seeds.
@@ -21,6 +21,9 @@ class LinkDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+
+        $this->command->warn(PHP_EOL . '🤖 🌱 seeding ' . str(__CLASS__)->explode('\\')->last() . ' ...');
+
 
         (new ScanTableDomain())->scan('link');
 
@@ -36,6 +39,8 @@ class LinkDatabaseSeeder extends Seeder
         $project->links()->attach(LinkModel::query()->get()->modelKeys());
 
         $this->call(class: PermissionTableSeeder::class, parameters: ['module' => $module]);
-//        $this->call(ProjectTableSeeder::class, parameters: ['project' => $project, 'module' => $module]);
+
+        $this->commandInfo(__CLASS__, '✔️ done');
+
     }
 }
