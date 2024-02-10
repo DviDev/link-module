@@ -40,7 +40,7 @@ class LinkDatabaseSeeder extends BaseSeeder
 
         $this->call(class: PermissionTableSeeder::class, parameters: ['module' => $module]);
 
-        $this->commandInfo(__CLASS__, '✔️ done');
+        $this->commandInfo(__CLASS__, '🟢 done');
 
     }
 }
