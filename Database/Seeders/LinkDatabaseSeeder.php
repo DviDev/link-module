@@ -24,23 +24,28 @@ class LinkDatabaseSeeder extends BaseSeeder
 
         $this->command->warn(PHP_EOL . '🤖 🌱 seeding ' . str(__CLASS__)->explode('\\')->last() . ' ...');
 
+        if (config('dbmap.name')) {
+            (new ScanTableDomain())->scan('link');
+        }
 
-        (new ScanTableDomain())->scan('link');
+        if (config('workspace.name')) {
+            WorkspaceModel::byUserId(User::query()->find(1)->id)
+                ->each(function (WorkspaceModel $workspace) {
+                    $user = $workspace->user;
+                    $this->call(LinkTableSeeder::class, true, compact('workspace', 'user'));
+                });
+        }
 
-        $module = ProjectModuleModel::byName('Link');
-        $project = $module->project;
+        if (config('project.name')) {
+            $module = ProjectModuleModel::byName('Link');
+            $project = $module->project;
+            $project->links()->attach(LinkModel::query()->get()->modelKeys());
 
-        WorkspaceModel::byUserId(User::query()->find(1)->id)
-            ->each(function (WorkspaceModel $workspace) {
-                $user = $workspace->user;
-                $this->call(LinkTableSeeder::class, true, compact('workspace', 'user'));
-            });
-
-        $project->links()->attach(LinkModel::query()->get()->modelKeys());
-
-        $this->call(class: PermissionTableSeeder::class, parameters: ['module' => $module]);
+            if (config('permission.name')) {
+                $this->call(class: PermissionTableSeeder::class, parameters: ['module' => $module]);
+            }
+        }
 
         $this->commandInfo(__CLASS__, '🟢 done');
-
     }
 }
