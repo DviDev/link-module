@@ -11,7 +11,11 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
 use Modules\Link\Models\LinkModel;
+use Modules\Project\Services\DynamicRoutes;
+
+DynamicRoutes::all('Link');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('link')->group(function () {

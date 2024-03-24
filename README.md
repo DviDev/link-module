@@ -1,6 +1,10 @@
 # Link module
 ## Simple management of links
 
+### Modules dependencies
+
+1. [**App**](https://github.com/DviDev/app-module)
+
 ```mermaid
 graph TD
     Any[...]-->Link;
@@ -89,4 +93,3 @@ graph TD
          1. [ ] required
       2. message
          1. [ ] required 
-
