@@ -5,11 +5,11 @@ namespace Modules\Link\Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Modules\App\Database\Seeders\MessageTableSeeder;
 use Modules\Base\Database\Seeders\BaseSeeder;
 use Modules\Base\Models\RecordModel;
 use Modules\Link\Models\LinkModel;
 use Modules\Link\Models\LinkTagModel;
+use Modules\Post\Database\Seeders\MessageTableSeeder;
 use Modules\Workspace\Models\WorkspaceModel;
 
 class LinkTableSeeder extends BaseSeeder
@@ -24,9 +24,9 @@ class LinkTableSeeder extends BaseSeeder
 
         $this->command->warn(PHP_EOL . '🤖 🌱 seeding ' . str(__CLASS__)->explode('\\')->last() . ' ...');
 
-        $links = LinkModel::factory(config('app.SEED_LINK_COUNT', 3))
+        $links = LinkModel::factory(config('link.SEED_LINKS_COUNT', 3))
             ->for($user, 'user')
-            ->has(LinkTagModel::factory(config('app.SEED_LINK_TAG_COUNT', 3)))
+            ->has(LinkTagModel::factory(config('link.SEED_LINK_TAGS_COUNT', 3)))
             ->create()
             ->modelKeys();
 
