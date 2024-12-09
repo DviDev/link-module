@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
 
             $p = LinkEntityModel::props(null, true);
-            $table->foreignId($p->record_id)->references('id')->on('app_records')
+            $table->foreignId($p->record_id)->references('id')->on('base_records')
                 ->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId($p->user_id)->references('id')->on('users')
                 ->cascadeOnUpdate()->restrictOnDelete();
