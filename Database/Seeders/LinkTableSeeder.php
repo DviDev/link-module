@@ -16,13 +16,14 @@ class LinkTableSeeder extends BaseSeeder
 {
     /**
      * Run the database seeds.
+     *
      * @return LinkModel[]|Collection
      */
     public function run(WorkspaceModel $workspace, User $user)
     {
         Model::unguard();
 
-        $this->command->warn(PHP_EOL . '🤖 🌱 seeding ' . str(__CLASS__)->explode('\\')->last() . ' ...');
+        $this->command->warn(PHP_EOL.'🤖 🌱 seeding '.str(__CLASS__)->explode('\\')->last().' ...');
 
         $links = LinkModel::factory(config('link.SEED_LINKS_COUNT', 3))
             ->for($user, 'user')

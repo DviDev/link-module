@@ -19,11 +19,11 @@ DynamicRoutes::all('Link');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('link')->group(function () {
-        Route::get('/list', fn() => view('link::components.page.links_page'))
+        Route::get('/list', fn () => view('link::components.page.links_page'))
             ->name('admin.links');
-        Route::get('/{link}/comments', fn(LinkModel $link) => view('link::components.page.comments_page', compact('link')))
+        Route::get('/{link}/comments', fn (LinkModel $link) => view('link::components.page.comments_page', compact('link')))
             ->name('admin.link.comments');
-        Route::get('/{link}/tags', fn(LinkModel $link) => view('link::components.page.tags_page', compact('link')))
+        Route::get('/{link}/tags', fn (LinkModel $link) => view('link::components.page.tags_page', compact('link')))
             ->name('admin.link.tags');
     });
 });

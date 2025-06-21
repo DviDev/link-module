@@ -7,7 +7,4 @@ namespace Modules\Link\Entities\LinkTag;
  * @property $link_id
  * @property $tag
  */
-trait LinkTagProps
-{
-
-}
+trait LinkTagProps {}

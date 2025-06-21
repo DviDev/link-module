@@ -16,8 +16,11 @@ use Modules\Workspace\Models\WorkspaceModel;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @property-read User $user
+ *
  * @method LinkEntityModel toEntity()
  */
 class LinkModel extends BaseModel
@@ -32,7 +35,8 @@ class LinkModel extends BaseModel
 
     protected static function newFactory()
     {
-        return new class extends BaseFactory {
+        return new class extends BaseFactory
+        {
             protected $model = LinkModel::class;
         };
     }

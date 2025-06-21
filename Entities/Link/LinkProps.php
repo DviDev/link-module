@@ -13,7 +13,4 @@ namespace Modules\Link\Entities\Link;
  * @property $updated_at
  * @property $deleted_at
  */
-trait LinkProps
-{
-
-}
+trait LinkProps {}
