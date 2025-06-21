@@ -2,6 +2,7 @@
 
 namespace Modules\Link\Repositories;
 
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Base\Repository\BaseRepository;
 use Modules\Link\Entities\LinkTag\LinkTagEntityModel;
 use Modules\Link\Models\LinkTagModel;
@@ -16,7 +17,7 @@ use Modules\Link\Models\LinkTagModel;
  * @method LinkTagEntityModel find($id)
  * @method LinkTagModel first()
  * @method LinkTagModel findOrNew($id)
- * @method LinkTagModel firstOrNew($query)
+ * @method LinkTagModel firstOrNew(Builder|\Illuminate\Database\Query\Builder $query)
  * @method LinkTagEntityModel findOrFail($id)
  */
 class LinkTagRepository extends BaseRepository
