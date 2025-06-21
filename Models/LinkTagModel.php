@@ -11,8 +11,11 @@ use Modules\Link\Entities\LinkTag\LinkTagProps;
 
 /**
  * @author Davi Menezes (davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @property-read LinkModel $link
+ *
  * @method LinkTagEntityModel toEntity()
  */
 class LinkTagModel extends BaseModel
@@ -27,7 +30,8 @@ class LinkTagModel extends BaseModel
 
     protected static function newFactory(): BaseFactory
     {
-        return new class extends BaseFactory {
+        return new class extends BaseFactory
+        {
             protected $model = LinkTagModel::class;
         };
     }

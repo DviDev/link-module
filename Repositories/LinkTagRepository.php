@@ -8,7 +8,9 @@ use Modules\Link\Models\LinkTagModel;
 
 /**
  * @author Davi Menezes(davimenezes.dev@gmail.com)
+ *
  * @link https://github.com/DaviMenezes
+ *
  * @method self obj()
  * @method LinkTagModel model()
  * @method LinkTagEntityModel find($id)
@@ -20,7 +22,7 @@ use Modules\Link\Models\LinkTagModel;
 class LinkTagRepository extends BaseRepository
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function modelClass(): string
     {

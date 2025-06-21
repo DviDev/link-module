@@ -22,10 +22,10 @@ class LinkDatabaseSeeder extends BaseSeeder
     {
         Model::unguard();
 
-        $this->command->warn(PHP_EOL . '🤖 🌱 seeding ' . str(__CLASS__)->explode('\\')->last() . ' ...');
+        $this->command->warn(PHP_EOL.'🤖 🌱 seeding '.str(__CLASS__)->explode('\\')->last().' ...');
 
         if (config('dbmap.name')) {
-            (new ScanTableDomain())->scan('link');
+            (new ScanTableDomain)->scan('link');
         }
 
         if (config('workspace.name')) {
