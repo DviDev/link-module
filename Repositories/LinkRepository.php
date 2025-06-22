@@ -2,6 +2,7 @@
 
 namespace Modules\Link\Repositories;
 
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Base\Repository\BaseRepository;
 use Modules\Link\Entities\Link\LinkEntityModel;
 use Modules\Link\Models\LinkModel;
@@ -16,7 +17,7 @@ use Modules\Link\Models\LinkModel;
  * @method LinkEntityModel find($id)
  * @method LinkModel first()
  * @method LinkModel findOrNew($id)
- * @method LinkModel firstOrNew($query)
+ * @method LinkModel firstOrNew(Builder|\Illuminate\Database\Query\Builder $query)
  * @method LinkEntityModel findOrFail($id)
  */
 class LinkRepository extends BaseRepository
