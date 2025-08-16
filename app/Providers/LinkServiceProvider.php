@@ -3,10 +3,6 @@
 namespace Modules\Link\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Link\Http\Livewire\LinkCommentTable;
-use Modules\Link\Http\Livewire\LinkCommentVoteTable;
-use Modules\Link\Http\Livewire\LinkTable;
-use Modules\Link\Http\Livewire\LinkTagTable;
 use Modules\Link\Http\Livewire\Pages\LinksPage;
 
 class LinkServiceProvider extends ServiceProvider
@@ -31,6 +27,9 @@ class LinkServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+
+        $this->registerComponents();
+
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
     }
 
@@ -41,11 +40,6 @@ class LinkServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        \Livewire::component('link::pages.links', LinksPage::class);
-        \Livewire::component('link::comment-table', LinkCommentTable::class);
-        \Livewire::component('link::comment-vote-table', LinkCommentVoteTable::class);
-        \Livewire::component('link::table', LinkTable::class);
-        \Livewire::component('link::tag-table', LinkTagTable::class);
 
         $this->app->register(RouteServiceProvider::class);
     }
@@ -119,5 +113,10 @@ class LinkServiceProvider extends ServiceProvider
         }
 
         return $paths;
+    }
+
+    protected function registerComponents(): void
+    {
+        \Livewire::component('link::pages.links', LinksPage::class);
     }
 }
