@@ -37,7 +37,7 @@ class LinkDatabaseSeeder extends BaseSeeder
         }
 
         if (config('project.name')) {
-            $module = ProjectModuleModel::byName('Link');
+            $module = ProjectModuleModel::byNameOrFactory('Link');
             $project = $module->project;
             $project->links()->attach(LinkModel::query()->get()->modelKeys());
 
