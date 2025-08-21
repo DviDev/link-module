@@ -2,8 +2,13 @@
 
 namespace Modules\Link\Providers;
 
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Modules\Link\Http\Livewire\Pages\LinksPage;
+use Modules\Link\Listeners\CreateMenuItemsListener;
+use Modules\Link\Listeners\DefineSearchableAttributes;
+use Modules\Project\Events\CreateMenuItemsEvent;
+use Modules\Project\Events\EntityAttributesCreatedEvent;
 
 class LinkServiceProvider extends ServiceProvider
 {
@@ -42,6 +47,9 @@ class LinkServiceProvider extends ServiceProvider
     {
 
         $this->app->register(RouteServiceProvider::class);
+
+        Event::listen(CreateMenuItemsEvent::class, CreateMenuItemsListener::class);
+        Event::listen(EntityAttributesCreatedEvent::class, DefineSearchableAttributes::class);
     }
 
     /**
