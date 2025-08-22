@@ -19,7 +19,8 @@
     "autoload": {
         "psr-4": {
             "Modules\\Link\\": "app/",
-            "Modules\\Link\\Database\\Seeders\\": "database/Seeders/"
+            "Modules\\Link\\Database\\Seeders\\": "database/Seeders/",
+            "Modules\\Link\\Database\\Migrations\\": "database/Migrations/"
         }
     }
 }

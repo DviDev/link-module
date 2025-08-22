@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Link\App\Events;
+namespace Modules\Link\Events;
 
 use Illuminate\Queue\SerializesModels;
 
