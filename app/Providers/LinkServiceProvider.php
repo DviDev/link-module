@@ -8,7 +8,7 @@ use Modules\Link\Http\Livewire\Pages\LinksPage;
 use Modules\Link\Listeners\CreateMenuItemsListener;
 use Modules\Link\Listeners\DefineSearchableAttributes;
 use Modules\Project\Events\CreateMenuItemsEvent;
-use Modules\Project\Events\EntityAttributesCreatedEvent;
+use Modules\View\Events\DefineSearchableAttributesEvent;
 
 class LinkServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,6 @@ class LinkServiceProvider extends ServiceProvider
      * @var string
      */
     protected $moduleName = 'Link';
-
     /**
      * @var string
      */
@@ -45,11 +44,10 @@ class LinkServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
         $this->app->register(RouteServiceProvider::class);
 
         Event::listen(CreateMenuItemsEvent::class, CreateMenuItemsListener::class);
-        Event::listen(EntityAttributesCreatedEvent::class, DefineSearchableAttributes::class);
+        Event::listen(DefineSearchableAttributesEvent::class, DefineSearchableAttributes::class);
     }
 
     /**
@@ -60,7 +58,7 @@ class LinkServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php'),
+            module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower . '.php'),
         ], 'config');
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower
@@ -74,13 +72,13 @@ class LinkServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/'.$this->moduleNameLower);
+        $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
 
         $sourcePath = module_path($this->moduleName, 'resources/views');
 
         $this->publishes([
             $sourcePath => $viewPath,
-        ], ['views', $this->moduleNameLower.'-module-views']);
+        ], ['views', $this->moduleNameLower . '-module-views']);
 
         $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
     }
@@ -92,7 +90,7 @@ class LinkServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = resource_path('lang/modules/'.$this->moduleNameLower);
+        $langPath = resource_path('lang/modules/' . $this->moduleNameLower);
 
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, $this->moduleNameLower);
@@ -117,8 +115,8 @@ class LinkServiceProvider extends ServiceProvider
     {
         $paths = [];
         foreach (\Config::get('view.paths') as $path) {
-            if (is_dir($path.'/modules/'.$this->moduleNameLower)) {
-                $paths[] = $path.'/modules/'.$this->moduleNameLower;
+            if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
+                $paths[] = $path . '/modules/' . $this->moduleNameLower;
             }
         }
 
