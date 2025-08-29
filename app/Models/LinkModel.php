@@ -3,7 +3,6 @@
 namespace Modules\Link\Models;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -25,7 +24,6 @@ use Modules\Workspace\Models\WorkspaceModel;
  */
 class LinkModel extends BaseModel
 {
-    use HasFactory;
     use LinkProps;
 
     public function modelEntity(): string
@@ -35,8 +33,7 @@ class LinkModel extends BaseModel
 
     protected static function newFactory()
     {
-        return new class extends BaseFactory
-        {
+        return new class extends BaseFactory {
             protected $model = LinkModel::class;
         };
     }
