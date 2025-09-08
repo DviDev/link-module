@@ -33,7 +33,8 @@ class LinkModel extends BaseModel
 
     protected static function newFactory()
     {
-        return new class extends BaseFactory {
+        return new class extends BaseFactory
+        {
             protected $model = LinkModel::class;
         };
     }
