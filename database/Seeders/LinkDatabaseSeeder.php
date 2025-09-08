@@ -46,6 +46,6 @@ class LinkDatabaseSeeder extends BaseSeeder
             }
         }
 
-        $this->commandInfo(__CLASS__, '🟢 done');
+        $this->done();
     }
 }

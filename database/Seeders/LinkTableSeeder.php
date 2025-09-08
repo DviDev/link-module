@@ -43,6 +43,6 @@ class LinkTableSeeder extends BaseSeeder
             });
         });
 
-        $this->commandInfo(__CLASS__, '🟢 done');
+        $this->done();
     }
 }
