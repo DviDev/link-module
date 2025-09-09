@@ -4,11 +4,15 @@ namespace Modules\Link\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Modules\DBMap\Events\ScanTableEvent;
 use Modules\Link\Http\Livewire\Pages\LinksPage;
 use Modules\Link\Listeners\CreateMenuItemsListener;
 use Modules\Link\Listeners\DefineSearchableAttributes;
+use Modules\Link\Listeners\ScanTableLinkListener;
+use Modules\Link\Listeners\TranslateViewElementPropertiesLinkListener;
 use Modules\Project\Events\CreateMenuItemsEvent;
 use Modules\View\Events\DefineSearchableAttributesEvent;
+use Modules\View\Events\ElementPropertyCreatingEvent;
 
 class LinkServiceProvider extends ServiceProvider
 {
@@ -49,6 +53,8 @@ class LinkServiceProvider extends ServiceProvider
 
         Event::listen(CreateMenuItemsEvent::class, CreateMenuItemsListener::class);
         Event::listen(DefineSearchableAttributesEvent::class, DefineSearchableAttributes::class);
+        Event::listen(ScanTableEvent::class, ScanTableLinkListener::class);
+        Event::listen(ElementPropertyCreatingEvent::class, TranslateViewElementPropertiesLinkListener::class);
     }
 
     /**
