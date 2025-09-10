@@ -7,7 +7,6 @@ use Modules\Link\Entities\LinkTag\LinkTagEntityModel;
 
 return new class extends Migration
 {
-
     public function up()
     {
         Schema::create('link_tags', function (Blueprint $table) {
@@ -20,7 +19,6 @@ return new class extends Migration
             $table->char($prop->tag, 14);
         });
     }
-
 
     public function down()
     {

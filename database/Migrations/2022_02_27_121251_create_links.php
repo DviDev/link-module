@@ -7,7 +7,6 @@ use Modules\Link\Entities\Link\LinkEntityModel;
 
 return new class extends Migration
 {
-
     public function up()
     {
         Schema::create('links', function (Blueprint $table) {
@@ -28,7 +27,6 @@ return new class extends Migration
 
         });
     }
-
 
     public function down()
     {
