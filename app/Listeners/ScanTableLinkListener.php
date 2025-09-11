@@ -8,6 +8,6 @@ class ScanTableLinkListener
 {
     public function handle($event): void
     {
-        new ScanTableDomain()->scan('link');
+        (new ScanTableDomain)->scan('link');
     }
 }
