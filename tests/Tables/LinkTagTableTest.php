@@ -8,10 +8,6 @@ use Modules\Link\Models\LinkTagModel;
 
 class LinkTagTableTest extends BaseTest
 {
-    public function getEntityClass(): string|LinkTagEntityModel
-    {
-        return LinkTagEntityModel::class;
-    }
 
     public function getModelClass(): string|LinkTagModel
     {
