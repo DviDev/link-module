@@ -52,9 +52,4 @@ class LinkTableTest extends BaseTest
     {
         parent::shouldDelete();
     }
-
-    protected function create(): LinkModel
-    {
-        return $this->getModelClass()::factory()->create();
-    }
 }
