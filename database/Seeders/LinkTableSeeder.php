@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Database\Seeders;
 
 use App\Models\User;
@@ -12,7 +14,7 @@ use Modules\Link\Models\LinkTagModel;
 use Modules\Post\Database\Seeders\MessageTableSeeder;
 use Modules\Workspace\Models\WorkspaceModel;
 
-class LinkTableSeeder extends BaseSeeder
+final class LinkTableSeeder extends BaseSeeder
 {
     /**
      * Run the database seeds.

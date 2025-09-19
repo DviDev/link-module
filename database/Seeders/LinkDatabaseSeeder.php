@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Database\Seeders;
 
 use App\Models\User;
@@ -11,7 +13,7 @@ use Modules\Permission\Database\Seeders\PermissionTableSeeder;
 use Modules\Project\Models\ProjectModuleModel;
 use Modules\Workspace\Models\WorkspaceModel;
 
-class LinkDatabaseSeeder extends BaseSeeder
+final class LinkDatabaseSeeder extends BaseSeeder
 {
     /**
      * Run the database seeds.

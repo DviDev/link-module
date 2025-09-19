@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'name' => 'Link',
     'SEED_LINK_COMMENT_VOTES_COUNT' => env('SEEDER_DEFAULT', 3),

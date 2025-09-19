@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Models;
 
 use App\Models\User;
@@ -22,26 +24,18 @@ use Modules\Workspace\Models\WorkspaceModel;
  *
  * @method LinkEntityModel toEntity()
  */
-class LinkModel extends BaseModel
+final class LinkModel extends BaseModel
 {
     use LinkProps;
-
-    public function modelEntity(): string
-    {
-        return LinkEntityModel::class;
-    }
-
-    protected static function newFactory()
-    {
-        return new class extends BaseFactory
-        {
-            protected $model = LinkModel::class;
-        };
-    }
 
     public static function table($alias = null): string
     {
         return self::dbTable('links', $alias);
+    }
+
+    public function modelEntity(): string
+    {
+        return LinkEntityModel::class;
     }
 
     public function user(): BelongsTo
@@ -62,5 +56,13 @@ class LinkModel extends BaseModel
     public function workspaces(): BelongsToMany
     {
         return $this->belongsToMany(WorkspaceModel::class, WorkspaceLinkModel::table(), 'workspace_id', 'link_id');
+    }
+
+    protected static function newFactory()
+    {
+        return new class extends BaseFactory
+        {
+            protected $model = LinkModel::class;
+        };
     }
 }

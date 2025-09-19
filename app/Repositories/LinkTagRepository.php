@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -20,7 +22,7 @@ use Modules\Link\Models\LinkTagModel;
  * @method LinkTagModel firstOrNew(Builder|\Illuminate\Database\Query\Builder $query)
  * @method LinkTagEntityModel findOrFail($id)
  */
-class LinkTagRepository extends BaseRepository
+final class LinkTagRepository extends BaseRepository
 {
     /**
      * {@inheritDoc}

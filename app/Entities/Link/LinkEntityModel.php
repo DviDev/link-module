@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Entities\Link;
 
 use Modules\Base\Entities\BaseEntityModel;
@@ -18,7 +20,7 @@ use Modules\Link\Repositories\LinkRepository;
  * @method static self props($alias = null, $force = null)
  * @method LinkRepository repository()
  */
-class LinkEntityModel extends BaseEntityModel
+final class LinkEntityModel extends BaseEntityModel
 {
     use LinkProps;
 

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class UrlController extends Controller
+final class UrlController extends Controller
 {
     /**
      * Display a listing of the resource.

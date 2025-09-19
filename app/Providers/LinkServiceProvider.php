@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Providers;
 
+use Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Livewire;
 use Modules\DBMap\Events\ScanTableEvent;
 use Modules\Link\Http\Livewire\Pages\LinksPage;
 use Modules\Link\Listeners\CreateMenuItemsListener;
@@ -14,7 +18,7 @@ use Modules\Project\Events\CreateMenuItemsEvent;
 use Modules\View\Events\DefineSearchableAttributesEvent;
 use Modules\View\Events\ElementPropertyCreatingEvent;
 
-class LinkServiceProvider extends ServiceProvider
+final class LinkServiceProvider extends ServiceProvider
 {
     /**
      * @var string
@@ -55,21 +59,6 @@ class LinkServiceProvider extends ServiceProvider
         Event::listen(DefineSearchableAttributesEvent::class, DefineSearchableAttributes::class);
         Event::listen(ScanTableEvent::class, ScanTableLinkListener::class);
         Event::listen(ElementPropertyCreatingEvent::class, TranslateViewElementPropertiesLinkListener::class);
-    }
-
-    /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
-    {
-        $this->publishes([
-            module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php'),
-        ], 'config');
-        $this->mergeConfigFrom(
-            module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower
-        );
     }
 
     /**
@@ -118,20 +107,35 @@ class LinkServiceProvider extends ServiceProvider
         return [];
     }
 
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        $this->publishes([
+            module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php'),
+        ], 'config');
+        $this->mergeConfigFrom(
+            module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower
+        );
+    }
+
+    protected function registerComponents(): void
+    {
+        Livewire::component('link::pages.links', LinksPage::class);
+    }
+
     private function getPublishableViewPaths(): array
     {
         $paths = [];
-        foreach (\Config::get('view.paths') as $path) {
+        foreach (Config::get('view.paths') as $path) {
             if (is_dir($path.'/modules/'.$this->moduleNameLower)) {
                 $paths[] = $path.'/modules/'.$this->moduleNameLower;
             }
         }
 
         return $paths;
-    }
-
-    protected function registerComponents(): void
-    {
-        \Livewire::component('link::pages.links', LinksPage::class);
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Tests\Tables;
 
 use Modules\Base\Services\Tests\BaseTest;
-use Modules\Link\Entities\Link\LinkEntityModel;
 use Modules\Link\Models\LinkModel;
 
-class LinkTableTest extends BaseTest
+final class LinkTableTest extends BaseTest
 {
-
     public function getModelClass(): string|LinkModel
     {
         return LinkModel::class;
