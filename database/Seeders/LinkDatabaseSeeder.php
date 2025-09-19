@@ -32,7 +32,7 @@ final class LinkDatabaseSeeder extends BaseSeeder
 
         if (config('workspace.name')) {
             WorkspaceModel::byUserId(User::query()->find(1)->id)
-                ->each(function (WorkspaceModel $workspace) {
+                ->each(function (WorkspaceModel $workspace): void {
                     $user = $workspace->user;
                     $this->call(LinkTableSeeder::class, true, compact('workspace', 'user'));
                 });

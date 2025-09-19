@@ -11,7 +11,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('link_tags', function (Blueprint $table) {
+        Schema::create('link_tags', function (Blueprint $table): void {
             $table->id();
 
             $prop = LinkTagEntityModel::props(null, true);

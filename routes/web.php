@@ -18,6 +18,6 @@ use Modules\Project\Services\DynamicRoutes;
 
 DynamicRoutes::all('Link');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::prefix('link')->group(function () {});
+Route::middleware(['auth', 'verified'])->group(function (): void {
+    Route::prefix('link')->group(function (): void {});
 });

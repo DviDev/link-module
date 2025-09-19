@@ -11,7 +11,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('links', function (Blueprint $table) {
+        Schema::create('links', function (Blueprint $table): void {
             $table->id();
 
             $p = LinkEntityModel::props(null, true);
