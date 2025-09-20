@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Base\Database\Seeders\BaseSeeder;
 use Modules\Base\Models\RecordModel;
@@ -12,13 +13,8 @@ use Modules\Link\Models\LinkTagModel;
 use Modules\Post\Database\Seeders\MessageTableSeeder;
 use Modules\Workspace\Models\WorkspaceModel;
 
-class LinkTableSeeder extends BaseSeeder
+final class LinkTableSeeder extends BaseSeeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return LinkModel[]|Collection
-     */
     public function run(WorkspaceModel $workspace, User $user)
     {
         Model::unguard();
@@ -33,12 +29,12 @@ class LinkTableSeeder extends BaseSeeder
 
         $workspace->links()->attach($links);
 
-        $workspace->links()->each(function (LinkModel $link) use ($workspace) {
+        $workspace->links()->each(function (LinkModel $link) use ($workspace): void {
             $entity = RecordModel::factory()->create();
             $link->record_id = $entity->id;
             $link->save();
 
-            $workspace->participants()->each(function (User $user) use ($entity) {
+            $workspace->participants()->each(function (User $user) use ($entity): void {
                 $this->call(MessageTableSeeder::class, parameters: compact('entity', 'user'));
             });
         });

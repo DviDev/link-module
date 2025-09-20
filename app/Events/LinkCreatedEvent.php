@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Events;
 
 use Illuminate\Queue\SerializesModels;
 
-class LinkCreatedEvent
+final class LinkCreatedEvent
 {
     use SerializesModels;
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Database\Seeders;
 
 use App\Models\User;
@@ -11,7 +13,7 @@ use Modules\Permission\Database\Seeders\PermissionTableSeeder;
 use Modules\Project\Models\ProjectModuleModel;
 use Modules\Workspace\Models\WorkspaceModel;
 
-class LinkDatabaseSeeder extends BaseSeeder
+final class LinkDatabaseSeeder extends BaseSeeder
 {
     /**
      * Run the database seeds.
@@ -30,7 +32,7 @@ class LinkDatabaseSeeder extends BaseSeeder
 
         if (config('workspace.name')) {
             WorkspaceModel::byUserId(User::query()->find(1)->id)
-                ->each(function (WorkspaceModel $workspace) {
+                ->each(function (WorkspaceModel $workspace): void {
                     $user = $workspace->user;
                     $this->call(LinkTableSeeder::class, true, compact('workspace', 'user'));
                 });

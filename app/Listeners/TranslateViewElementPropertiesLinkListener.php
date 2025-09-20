@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Listeners;
 
 use Modules\Base\Contracts\BaseTranslateViewElementPropertiesListener;
 
-class TranslateViewElementPropertiesLinkListener extends BaseTranslateViewElementPropertiesListener
+final class TranslateViewElementPropertiesLinkListener extends BaseTranslateViewElementPropertiesListener
 {
     protected function moduleName(): string
     {
@@ -13,6 +15,6 @@ class TranslateViewElementPropertiesLinkListener extends BaseTranslateViewElemen
 
     protected function moduleNameLower(): string
     {
-        return strtolower(config('link.name'));
+        return mb_strtolower(config('link.name'));
     }
 }

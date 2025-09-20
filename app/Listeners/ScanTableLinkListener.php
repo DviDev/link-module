@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Link\Listeners;
 
 use Modules\DBMap\Domains\ScanTableDomain;
 
-class ScanTableLinkListener
+final class ScanTableLinkListener
 {
     public function handle($event): void
     {
