@@ -10,7 +10,7 @@ use Modules\Base\Database\Seeders\BaseSeeder;
 use Modules\DBMap\Domains\ScanTableDomain;
 use Modules\Link\Models\LinkModel;
 use Modules\Permission\Database\Seeders\PermissionTableSeeder;
-use Modules\Project\Models\ProjectModuleModel;
+use Modules\Schema\Models\ProjectModuleModel;
 use Modules\Workspace\Models\WorkspaceModel;
 
 final class LinkDatabaseSeeder extends BaseSeeder
