@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Link\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Base\Contracts\BaseFactory;
 use Modules\Base\Contracts\BaseModel;
-use Modules\Base\Factories\BaseFactory;
 use Modules\Link\Entities\LinkTag\LinkTagEntityModel;
 use Modules\Link\Entities\LinkTag\LinkTagProps;
 

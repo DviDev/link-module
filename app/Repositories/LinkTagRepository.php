@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Link\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
-use Modules\Base\Repository\BaseRepository;
+use Modules\Base\Contracts\BaseRepository;
 use Modules\Link\Entities\LinkTag\LinkTagEntityModel;
 use Modules\Link\Models\LinkTagModel;
 

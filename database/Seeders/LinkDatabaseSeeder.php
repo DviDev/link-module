@@ -6,11 +6,11 @@ namespace Modules\Link\Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Base\Database\Seeders\BaseSeeder;
+use Modules\Base\Contracts\BaseSeeder;
 use Modules\DBMap\Domains\ScanTableDomain;
 use Modules\Link\Models\LinkModel;
 use Modules\Permission\Database\Seeders\PermissionTableSeeder;
-use Modules\Project\Models\ProjectModuleModel;
+use Modules\Schema\Models\ModuleModel;
 use Modules\Workspace\Models\WorkspaceModel;
 
 final class LinkDatabaseSeeder extends BaseSeeder
@@ -39,7 +39,7 @@ final class LinkDatabaseSeeder extends BaseSeeder
         }
 
         if (config('project.name')) {
-            $module = ProjectModuleModel::byNameOrFactory('Link');
+            $module = ModuleModel::byNameOrFactory('Link');
             $project = $module->project;
             $project->links()->attach(LinkModel::query()->get()->modelKeys());
 

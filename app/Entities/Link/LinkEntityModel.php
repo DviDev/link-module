@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Link\Entities\Link;
 
-use Modules\Base\Entities\BaseEntityModel;
+use Modules\Base\Contracts\BaseEntityModel;
 use Modules\Link\Models\LinkModel;
 use Modules\Link\Repositories\LinkRepository;
 
